@@ -23,19 +23,27 @@ var todosFactory = {
         return thunk
     },
 
-    add : (todo) => {
-        var action = {
-            type:'ADD_TODO',
-            payload:todo
+    add : (data) => {
+        var thunk = (dispatch) => {
+
+            api.addTodos(data)
+            .then(res => {
+                dispatch(todosFactory.load())
+            })
         }
-        return action
+
+        return thunk
     },
     remove : (id) => {
-        var action = {
-            type:'REMOVE_TODO',
-            payload:id
+        var thunk = (dispatch) => {
+
+            api.deleteTodos(id)
+            .then(res => {
+                dispatch(todosFactory.load())
+            })
         }
-        return action
+        
+        return thunk
     },
 
 }

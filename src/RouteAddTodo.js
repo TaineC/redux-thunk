@@ -24,7 +24,6 @@ class RouteAddTodo extends Component{
 	handleTodoAddClick = (e) => {
 		e.preventDefault();
 		var todo = {
-			id: Date.now(),
 			content: this.state.contentInput,
 			priority:this.state.priorityInput,
 			username:this.props.currentUser.username
